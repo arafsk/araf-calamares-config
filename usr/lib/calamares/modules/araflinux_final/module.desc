@@ -1,0 +1,4 @@
+name: "araflinux_final"
+type: "job"
+interface: "python"
+script: "main.py"
