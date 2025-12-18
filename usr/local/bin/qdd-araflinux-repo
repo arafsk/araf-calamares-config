@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-echo '
-#[araflinux-core]
-#SigLevel = Optional DatabaseOptional
-#Include = /etc/pacman.d/araflinux-repos
-' | sudo tee --append /etc/pacman.conf
-sudo pacman -Syyu

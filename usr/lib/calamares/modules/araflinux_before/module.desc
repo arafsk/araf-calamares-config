@@ -1,4 +1,0 @@
-name: "araflinux_before"
-type: "job"
-interface: "python"
-script: "main.py"
