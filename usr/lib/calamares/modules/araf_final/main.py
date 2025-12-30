@@ -39,32 +39,11 @@ def detect_x11_session(target_root):
     except Exception as e:
         libcalamares.utils.warning(f"Failed to detect X11 session: {e}")
     return None
-
-def build_chadwm_for_user(target_root):
-    """Build ChadWM for user with UID 1000 in the target system."""
-    try:
-        result = subprocess.run(
-            ["chroot", target_root, "getent", "passwd", "1000"],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        username = result.stdout.split(":")[0]
-        config_path = f"/home/{username}/.config/arco-chadwm/chadwm"
-        full_path = os.path.join(target_root, config_path)
-
-        if os.path.isdir(full_path):
-            libcalamares.utils.debug(f"Building ChadWM at {config_path}")
-            subprocess.run(["make", "-B"], cwd=full_path, check=True)
-            subprocess.run(["make", "install"], cwd=full_path, check=True)
-        else:
-            libcalamares.utils.warning(f"Directory {config_path} not found. Skipping ChadWM build.")
-    except Exception as e:
         libcalamares.utils.warning(f"Failed to build ChadWM: {e}")
 
 def run():
     libcalamares.utils.debug("#################################")
-    libcalamares.utils.debug("Start kiro_final module")
+    libcalamares.utils.debug("Start araf_final module")
     libcalamares.utils.debug("#################################\n")
 
     target_root = libcalamares.globalstorage.value("rootMountPoint")
@@ -298,7 +277,7 @@ def run():
         libcalamares.utils.warning(f"Failed to remove araf-calamares-config: {e}")
 
     libcalamares.utils.debug("##############################################")
-    libcalamares.utils.debug("End kiro_final module")
+    libcalamares.utils.debug("End araf_final module")
     libcalamares.utils.debug("##############################################\n")
 
     return None

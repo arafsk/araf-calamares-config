@@ -83,10 +83,10 @@ def initialize_pacman_keys():
 # === Move mkinitcpio preset ===
 def move_mkinitcpio_preset():
     target_root = libcalamares.globalstorage.value("rootMountPoint")
-    src = os.path.join(target_root, "etc/mkinitcpio.d/kiro")
+    src = os.path.join(target_root, "etc/mkinitcpio.d/araf")
     dst = os.path.join(target_root, "etc/mkinitcpio.d/linux.preset")
 
-    libcalamares.utils.debug("-> Moving kiro preset to linux.preset in target...")
+    libcalamares.utils.debug("-> Moving araf preset to linux.preset in target...")
     try:
         os.replace(src, dst)
     except FileNotFoundError:
@@ -104,7 +104,7 @@ def move_mkinitcpio_preset():
 # === Main run function ===
 def run():
     libcalamares.utils.debug("#################################")
-    libcalamares.utils.debug("Start kiro_before")
+    libcalamares.utils.debug("Start araf_before")
     libcalamares.utils.debug("#################################\n")
 
     for step_func in [
@@ -117,6 +117,6 @@ def run():
         if error:
             return error
     libcalamares.utils.debug("#################################")
-    libcalamares.utils.debug("End kiro_before")
+    libcalamares.utils.debug("End araf_before")
     libcalamares.utils.debug("#################################\n")
     return None

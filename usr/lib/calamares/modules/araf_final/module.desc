@@ -1,4 +1,4 @@
-name: "kiro_remove_nvidia"
+name: "araf_final"
 type: "job"
 interface: "python"
 script: "main.py"
