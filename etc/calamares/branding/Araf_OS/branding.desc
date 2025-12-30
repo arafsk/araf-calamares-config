@@ -8,7 +8,7 @@
 # Additional styling can be done using the stylesheet.qss
 # file, also in the branding directory.
 ---
-componentName:  araf
+componentName:  Araf_OS
 
 
 ### WELCOME / OVERALL WORDING
@@ -121,13 +121,13 @@ navigation: widget
 # are visible as buttons there if the corresponding *show* keys
 # are set to "true" (they can also be overridden).
 strings:
-    productName:         araf
-    shortProductName:    araf
+    productName:         Araf_OS
+    shortProductName:    Araf_OS
     version:             3.0
     shortVersion:        3.0
-    versionedName:       araf
-    shortVersionedName:  araf
-    bootloaderEntryName: araf
+    versionedName:       Araf_OS
+    shortVersionedName:  Araf_OS
+    bootloaderEntryName: Araf_OS
 
 # These images are loaded from the branding module directory.
 #
