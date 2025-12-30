@@ -29,18 +29,6 @@ def is_package_installed(package_name, target_root):
         libcalamares.utils.warning(f"Failed to check package {package_name}: {e}")
         return False
 
-def detect_x11_session(target_root):
-    """Detect the X11 session in the target system."""
-    xsessions_path = os.path.join(target_root, "usr/share/xsessions")
-    try:
-        for entry in os.listdir(xsessions_path):
-            if entry.endswith(".desktop"):
-                return entry
-    except Exception as e:
-        libcalamares.utils.warning(f"Failed to detect X11 session: {e}")
-    return None
-        libcalamares.utils.warning(f"Failed to build ChadWM: {e}")
-
 def run():
     libcalamares.utils.debug("#################################")
     libcalamares.utils.debug("Start araf_final module")
@@ -159,22 +147,7 @@ def run():
         for grub_file in grub_defaults:
             remove_path(os.path.join(target_root, "etc/default", grub_file))
 
-    # --- Desktop-specific ChadWM logic ---
-    libcalamares.utils.debug("#################################")
-    libcalamares.utils.debug("Start chadwm build")
-    libcalamares.utils.debug("#################################\n")
-
-    desktop = detect_x11_session(target_root)
-    if desktop is None:
-        libcalamares.utils.debug("No X11 session detected.")
-    elif desktop == "chadwm.desktop":
-        libcalamares.utils.debug(f"Detected session file: {desktop}")
-        libcalamares.utils.debug("Detected ChadWM session. Building ChadWM.")
-        build_chadwm_for_user(target_root)
-    else:
-        libcalamares.utils.debug(f"No specific action for session: {desktop}")
-
-    # --- Kiro virtual machine check ---
+    # --- Virtual machine check ---
     libcalamares.utils.debug("##############################################")
     libcalamares.utils.debug("Removing virtual machine packages")
     libcalamares.utils.debug("##############################################\n")
